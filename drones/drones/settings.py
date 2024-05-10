@@ -26,14 +26,9 @@ SECRET_KEY = "django-insecure-lp6se9&tl*n096#59#1zefy)o-#q7!1h)78x0i@a-@lg*6aqsf
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['aws_ec2_dataserver', '54.193.47.7', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['*']
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'djongo',
-        'NAME': 'smartcity',
-    }
-}
+
 
 
 
@@ -59,7 +54,7 @@ CORS_ALLOWED_ORIGINS = [
 
 CORS_ALLOW_ALL_HEADERS = True
 
-CORS_ORIGIN_ALLOW_ALL = True
+#CORS_ORIGIN_ALLOW_ALL = True
 
 
 CORS_ALLOW_METHODS = [
@@ -72,9 +67,9 @@ CORS_ALLOW_METHODS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
-    'corsheaders.middleware.CorsMiddleware',
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
@@ -106,15 +101,24 @@ WSGI_APPLICATION = "drones.wsgi.application"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
+    'default': {
+        'ENGINE': 'djongo',
+        'NAME': 'smartcity',
+    }
+}
+
+DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
         "NAME": "intellicity",
-        "USER": "sri",
+        "USER": "cmpe281",
         "PASSWORD": "cmpe281",
         "HOST": "54.215.154.45",
         "PORT": "3306",
     }
 }
+
+
 
 
 # Password validation

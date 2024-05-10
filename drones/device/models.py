@@ -14,3 +14,14 @@ class Device(models.Model):
     
     class Meta:
         db_table = 'drones'
+        
+class Incident(models.Model):
+    id = models.AutoField(primary_key=True)
+    timestamp = models.DateTimeField(auto_now=True)
+    type = models.CharField(max_length=45)
+    latitude = models.DecimalField(max_digits=9, decimal_places=5)
+    longitude = models.DecimalField(max_digits=9, decimal_places=5)
+    district = models.IntegerField()
+
+    class Meta:
+        db_table = 'incidents'
