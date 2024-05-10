@@ -1,4 +1,5 @@
 
+from django.http import JsonResponse,HttpResponseNotAllowed,StreamingHttpResponse
 from django.shortcuts import render, HttpResponse
 from django.views.decorators.csrf import csrf_exempt  
 from rest_framework.decorators import api_view
@@ -7,15 +8,14 @@ from rest_framework import status
 from .detection import detect
 from .mongodb import MongoDBProcessor
 from .mysql import MysqlProcessor
-from django.http import JsonResponse,HttpResponseNotAllowed,StreamingHttpResponse
-from .models import Device
-import json
+from .models import Device,Incident
 from queue import Queue
+
+import json
 import cv2
 
 streaming = True
 
-# Create your views here.
 @csrf_exempt
 def addDevice(request):
     if request.method == 'POST':
@@ -160,6 +160,7 @@ def disableDevice(request):
         return HttpResponse('Device disabled')
     else:
         return HttpResponse('Device not found')
+    
 @csrf_exempt
 def searchedDevice(request):
     if request.method == 'GET':

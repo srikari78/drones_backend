@@ -10,4 +10,4 @@ services:
       - .env
     volumes:
       - .:/app
-    mem_limit: 2G
+    mem_limit: 1G
