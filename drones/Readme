@@ -1,0 +1,3 @@
+create .env file with required information like database username, password, address, portno.
+install dependencies from requirements.txt ==> pip install requirements.txt
+run the project ==> python manage.py runserver
